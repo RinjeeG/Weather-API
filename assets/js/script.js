@@ -36,11 +36,13 @@ $(document).ready(function() {
             success: function(response) {
                 // Display current weather
                 $('#current-weather').html(`
-                    <h3>Current Weather for ${response.name} (${new Date().toLocaleDateString()})</h3>
-                    <p>Temperature: ${response.main.temp}°C</p>
-                    <p>Humidity: ${response.main.humidity}%</p>
-                    <p>Wind Speed: ${response.wind.speed}m/s</p>
-                    <img src="http://openweathermap.org/img/wn/${response.weather[0].icon}.png" alt="Weather Icon">
+                    <div class="border border-dark p-2">
+                        <h3>Current Weather for ${response.name} (${new Date().toLocaleDateString()})</h3>
+                        <p>Temperature: ${response.main.temp}°C</p>
+                        <p>Humidity: ${response.main.humidity}%</p>
+                        <p>Wind Speed: ${response.wind.speed}m/s</p>
+                        <img src="http://openweathermap.org/img/wn/${response.weather[0].icon}.png" alt="Weather Icon">
+                    </div>
                 `);
             },
             error: function() {
@@ -62,11 +64,12 @@ $(document).ready(function() {
                 response.list.forEach((entry, index) => {
                     if(index % 8 === 0) { // Assuming data comes every 3 hours, 8 data points represent one day
                         forecastHtml += `
-                            <div class="col">
+                            <div class="col border border-dark bg-primary m-2">
                                 <h5>${new Date(entry.dt_txt).toLocaleDateString()}</h5>
                                 <img src="http://openweathermap.org/img/wn/${entry.weather[0].icon}.png" alt="Weather Icon">
                                 <p>Temp: ${entry.main.temp}°C</p>
                                 <p>Humidity: ${entry.main.humidity}%</p>
+                                <p>Wind Speed: ${entry.wind.speed}m/s</p>
                             </div>
                         `;
                     }
