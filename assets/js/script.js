@@ -4,7 +4,7 @@ $(document).ready(function() {
     displaySearchHistory();
     // Function to fetch latitude and longitude for the given city
     function fetchCoordinates(city) {
-        const geocodeUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+        const geocodeUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
 
         $.ajax({
             url: geocodeUrl,
@@ -66,7 +66,7 @@ $(document).ready(function() {
                         forecastHtml += `
                             <div class="col border border-dark bg-primary m-2">
                                 <h5>${new Date(entry.dt_txt).toLocaleDateString()}</h5>
-                                <img src="http://openweathermap.org/img/wn/${entry.weather[0].icon}.png" alt="Weather Icon">
+                                <img src="https://openweathermap.org/img/wn/${entry.weather[0].icon}.png" alt="Weather Icon">
                                 <p>Temp: ${entry.main.temp}°C</p>
                                 <p>Humidity: ${entry.main.humidity}%</p>
                                 <p>Wind Speed: ${entry.wind.speed}m/s</p>
